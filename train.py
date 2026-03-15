@@ -4,17 +4,16 @@ Trains the SimCLR foundation model on unlabelled plant disease images.
 Saves checkpoints and the final encoder (ready for fine-tuning).
 """
 
-import os
 import argparse
+import os
 
 import torch
 import torch.optim as optim
 from torch.optim.lr_scheduler import CosineAnnealingLR
 
-from model   import SimCLRModel
 from dataset import get_ssl_dataloader
-from loss    import NTXentLoss
-
+from loss import NTXentLoss
+from model import SimCLRModel
 
 # ---------------------------------------------------------------------------
 # Argument parsing

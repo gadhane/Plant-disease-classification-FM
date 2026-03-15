@@ -7,7 +7,6 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 
-
 # ---------------------------------------------------------------------------
 # 1.  Encoder  (the part we KEEP after pre-training)
 # ---------------------------------------------------------------------------

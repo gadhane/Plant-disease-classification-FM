@@ -17,11 +17,10 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from model   import Encoder, ProjectionHead, SimCLRModel
-from loss    import NTXentLoss
 from dataset import PlantDiseaseSSLDataset, get_ssl_augmentation
 from finetune import PlantDiseaseClassifier
-
+from loss import NTXentLoss
+from model import Encoder, ProjectionHead, SimCLRModel
 
 # =============================================================================
 # Fixtures

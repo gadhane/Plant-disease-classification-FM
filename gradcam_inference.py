@@ -3,27 +3,27 @@
 
 """
 
-import os
-import sys
 import argparse
+import os
 import random
+import sys
 
 import cv2
+import matplotlib
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torchvision import transforms
 from PIL import Image
+from torchvision import transforms
 
-import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(__file__))
-from model import Encoder
 from finetune import PlantDiseaseClassifier
+from model import Encoder
 
 sys.stdout.reconfigure(encoding="utf-8")
 

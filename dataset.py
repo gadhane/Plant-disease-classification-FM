@@ -6,12 +6,11 @@ This is the "positive pair" that SimCLR trains on.
 """
 
 import os
-from PIL import Image
 
 import torch
-from torch.utils.data import Dataset, DataLoader
+from PIL import Image
+from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
-
 
 # ---------------------------------------------------------------------------
 # 1.  Augmentation Pipeline  (plant disease specific)

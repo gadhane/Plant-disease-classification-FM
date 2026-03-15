@@ -5,25 +5,28 @@ classification head on top, then trains on labelled plant disease images.
 
 """
 
+import argparse
+import csv
 import os
 import sys
-import csv
-import argparse
 
+import matplotlib
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
-from torchvision import transforms, datasets
+from torchvision import datasets, transforms
 
-import numpy as np
-import matplotlib
 matplotlib.use("Agg")   # non-interactive backend (works without a display)
 import matplotlib.pyplot as plt
 from sklearn.metrics import (
-    precision_score, recall_score, f1_score,
-    confusion_matrix, classification_report,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
 )
 
 # Make sure model.py is importable from the same directory
