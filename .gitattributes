@@ -1,0 +1,87 @@
+# =============================================================================
+# .gitattributes
+# Controls line endings, diff behaviour, and Git LFS tracking
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Default: auto line-ending normalisation for all text files
+# -----------------------------------------------------------------------------
+* text=auto
+
+# -----------------------------------------------------------------------------
+# Explicitly text files — enforce LF line endings in the repo
+# (avoids Windows CRLF issues in CI/CD and Docker environments)
+# -----------------------------------------------------------------------------
+*.py        text eol=lf
+*.md        text eol=lf
+*.txt       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.json      text eol=lf
+*.toml      text eol=lf
+*.cfg       text eol=lf
+*.ini       text eol=lf
+*.sh        text eol=lf
+*.env       text eol=lf
+*.csv       text eol=lf
+Makefile    text eol=lf
+Dockerfile  text eol=lf
+*.dockerfile text eol=lf
+
+# -----------------------------------------------------------------------------
+# Binary files — tell Git not to diff or mangle these
+# -----------------------------------------------------------------------------
+# Model weights
+*.pt        binary
+*.pth       binary
+*.ckpt      binary
+*.pkl       binary
+*.pickle    binary
+*.h5        binary
+*.hdf5      binary
+*.safetensors binary
+*.bin       binary
+*.npz       binary
+*.npy       binary
+
+# Images
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.bmp       binary
+*.tiff      binary
+*.tif       binary
+*.webp      binary
+*.ico       binary
+*.svg       binary
+
+# Archives
+*.zip       binary
+*.tar       binary
+*.gz        binary
+*.bz2       binary
+*.xz        binary
+*.7z        binary
+
+# =============================================================================
+# Git LFS — track large files with LFS instead of storing them in the repo
+# Install LFS: https://git-lfs.github.com/
+# Then run:   git lfs install
+# =============================================================================
+*.pt        filter=lfs diff=lfs merge=lfs -text
+*.pth       filter=lfs diff=lfs merge=lfs -text
+*.ckpt      filter=lfs diff=lfs merge=lfs -text
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+*.pkl       filter=lfs diff=lfs merge=lfs -text
+*.h5        filter=lfs diff=lfs merge=lfs -text
+*.hdf5      filter=lfs diff=lfs merge=lfs -text
+*.npz       filter=lfs diff=lfs merge=lfs -text
+*.zip       filter=lfs diff=lfs merge=lfs -text
+
+# =============================================================================
+# GitHub linguist overrides
+# Prevents generated / vendored files from inflating language stats
+# =============================================================================
+*.csv linguist-generated=true
+requirements*.txt linguist-documentation=true
