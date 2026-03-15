@@ -257,3 +257,5 @@ class TestPlantDiseaseClassifier:
         enc = Encoder(embed_dim=64)
         with pytest.raises(AssertionError):
             PlantDiseaseClassifier(encoder=enc, num_classes=10, strategy="invalid")
+
+            
