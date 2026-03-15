@@ -17,10 +17,11 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
+from model   import Encoder, ProjectionHead, SimCLRModel
+from loss    import NTXentLoss
 from dataset import PlantDiseaseSSLDataset, get_ssl_augmentation
 from finetune import PlantDiseaseClassifier
-from loss import NTXentLoss
-from model import Encoder, ProjectionHead, SimCLRModel
+
 
 # =============================================================================
 # Fixtures
@@ -165,12 +166,16 @@ class TestNTXentLoss:
 
     def test_gradient_flows_through_loss(self):
         loss_fn = NTXentLoss(temperature=0.5)
-        z_a = F.normalize(torch.randn(8, 32, requires_grad=True), dim=1)
-        z_b = F.normalize(torch.randn(8, 32, requires_grad=True), dim=1)
+        # F.normalize returns a non-leaf tensor, so .grad is always None on it.
+        # Gradients must be checked on the raw leaf tensors before normalisation.
+        raw_a = torch.randn(8, 32, requires_grad=True)
+        raw_b = torch.randn(8, 32, requires_grad=True)
+        z_a = F.normalize(raw_a, dim=1)
+        z_b = F.normalize(raw_b, dim=1)
         loss = loss_fn(z_a, z_b)
         loss.backward()
-        assert z_a.grad is not None
-        assert z_b.grad is not None
+        assert raw_a.grad is not None, "Gradient did not flow back to z_a"
+        assert raw_b.grad is not None, "Gradient did not flow back to z_b"
 
 
 # =============================================================================
