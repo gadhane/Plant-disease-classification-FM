@@ -47,7 +47,7 @@ This project implements a two-stage transfer learning pipeline:
 ## Project Structure
 
 ```
-plant-disease-ssl/
+Plant-disease-classification-FM/
 │
 ├── model.py                  # Encoder (ResNet-18) + ProjectionHead + SimCLRModel
 ├── dataset.py                # SSL contrastive dataset + augmentation pipeline
@@ -128,8 +128,8 @@ Unlabelled plant images
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/plant-disease-ssl.git
-cd plant-disease-ssl
+git clone https://github.com/gadhane/Plant-disease-classification-FM.git
+cd Plant-disease-classification-FM
 
 # Create and activate a virtual environment
 python -m venv venv
@@ -159,10 +159,6 @@ data/
     Apple___Apple_scab/
     ...
 ```
-
-> **Note:** The data directory is excluded from version control via `.gitignore`.  
-> The [PlantVillage dataset](https://www.kaggle.com/datasets/emmarex/plantdisease) is a common source for this class structure.
-
 ---
 
 ## Usage
@@ -295,24 +291,6 @@ Input (B, 3, 224, 224)
 
 ---
 
-## Metrics
-
-All metrics are computed and logged every epoch for both train and val splits:
-
-| Metric | Description |
-|---|---|
-| **Loss** | Cross-entropy with label smoothing |
-| **Accuracy** | Overall top-1 accuracy |
-| **Top-5 Accuracy** | True label in top-5 predictions |
-| **Precision (macro)** | Avg precision, all classes equal weight |
-| **Precision (weighted)** | Avg precision weighted by class size |
-| **Recall (macro / weighted)** | Sensitivity per class |
-| **F1 (macro / weighted)** | Harmonic mean of precision + recall |
-| **Per-class Accuracy** | Individual accuracy per disease class |
-| **Confusion Matrix** | Saved as PNG every 5 epochs |
-
----
-
 ## Output Files
 
 ```
@@ -367,8 +345,6 @@ pytest tests/ -v
 3. Commit your changes: `git commit -m "feat: add my feature"`
 4. Push to the branch: `git push origin feature/my-feature`
 5. Open a Pull Request
-
-Please follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages.
 
 ---
 
