@@ -39,11 +39,7 @@ jobs:
           pip install flake8 isort
 
       - name: Run flake8
-        run: |
-          flake8 . \
-            --max-line-length=120 \
-            --exclude=venv,.venv,__pycache__,.git \
-            --ignore=E203,W503
+        run: flake8 .
 
       - name: Check import ordering (isort)
         run: |
